@@ -1,0 +1,17 @@
+// Write a function that receives as parameter an array of numbers. This function will return a new array with all the original numbers that are even
+
+// Example: [1,2,3,4,5] => [2,4]
+let numbers = [1,2,3,4,5];
+
+function returnArray(arr){
+  let newArray = [];
+    for(let i = 0; i < arr.length; i++){
+      if(arr[i]%2 === 0){
+        newArray.push(arr[i]);
+      }
+    }
+    console.log(newArray);
+}
+
+returnArray(numbers);
+

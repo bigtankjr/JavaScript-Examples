@@ -1,0 +1,32 @@
+function getTokens(rawString) {
+  // NB: `.filter(Boolean)` removes any falsy items from an array
+  return rawString.toLowerCase().split(/[ ,!.";:-]+/).filter(Boolean).sort();
+}
+//recieve a string of text
+function mostFrequentWord(text) {
+  //use getTokens function to remove falsy characters and get specific words from text
+  let words = getTokens(text);
+  //initialize an object to hold each word
+  let wordFrequencies = {};
+  //iterate through the string assigning each word and key to a position in the array object
+  for (let i = 0; i <= words.length; i++) {
+    if (words[i] in wordFrequencies) {
+      wordFrequencies[words[i]]++;
+    } else {
+      wordFrequencies[words[i]] = 1;
+    }
+  }
+  /*assign key at the 0 position to currentMaxKey variable using the Object.key method
+    then assign the value at that location to currentMaxCount
+  */
+  let currentMaxKey = Object.keys(wordFrequencies)[0];
+  let currentMaxCount = wordFrequencies[currentMaxKey];
+  /*iterate through the array object to compare each word length value to the currentMaxCount value. If the current word length value is larger than the currentMaxCount value, assign the value to currentMaxKey to find longest word and use it's key as the max key. Continue to iterate until going through the entire array and returning the key of the word with the largest length value.*/
+  for (let word in wordFrequencies) {
+    if (wordFrequencies[word] > currentMaxCount) {
+      currentMaxKey = word;
+      currentMaxCount = wordFrequencies[word];
+    }
+  }
+  return currentMaxKey;
+}
